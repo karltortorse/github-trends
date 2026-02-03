@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Trends - February 3, 2026</title>
+    <meta name="description" content="Daily curated GitHub trending repositories with quick stats (language, stars, stars today).">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="3a86a96f-bb46-460c-bca8-3291603672f1"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --star-color: #eab308;
+            --green: #059669;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        header { text-align: center; margin-bottom: 32px; padding-top: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; color: #111827; }
+        .issue-info { color: var(--text-secondary); font-size: 0.95rem; }
+
+        h2.section-title {
+            font-size: 1.4rem;
+            margin: 32px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+            color: #111827;
+        }
+
+        .featured {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            color: white;
+        }
+        .featured-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .featured h3 { font-size: 1.5rem; margin: 0 0 10px; }
+        .featured h3 a { color: white; text-decoration: none; }
+        .featured h3 a:hover { text-decoration: underline; }
+        .featured p { margin: 0 0 14px; opacity: 0.95; }
+        .featured-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+        .featured .today-gain {
+            background: rgba(16, 185, 129, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .repo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+        }
+        .repo-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        .repo-rank {
+            background: #f3f4f6;
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .repo-name { font-size: 1.05rem; margin: 0; font-weight: 600; }
+        .repo-name a { color: var(--primary); text-decoration: none; }
+        .repo-name a:hover { text-decoration: underline; }
+        .repo-desc { color: var(--text); margin: 6px 0 10px; font-size: 0.95rem; }
+        .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .today-stars { color: var(--green); font-weight: 500; }
+        .language-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .lang-ts { background: #3178c6; }
+        .lang-lua { background: #000080; }
+        .lang-java { background: #b07219; }
+        .lang-go { background: #00ADD8; }
+        .lang-py { background: #3572A5; }
+
+        .analysis {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 14px 18px;
+            margin: 18px 0 26px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.93rem;
+            color: #92400e;
+        }
+        .analysis strong { color: #92400e; }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Archives</a>
+        <header>
+            <h1>🔥 GitHub Trends</h1>
+            <div class="issue-info">Issue #3 · Tuesday, February 3, 2026</div>
+        </header>
+
+        <!-- Featured repo (#1) -->
+        <div class="featured">
+            <div class="featured-badge">🏆 #1 TRENDING TODAY</div>
+            <h3><a href="https://github.com/thedotmack/claude-mem" target="_blank">thedotmack / claude-mem</a></h3>
+            <p>A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI, and injects relevant context back into future sessions.</p>
+            <div class="featured-stats">
+                <span>⭐ 18,443</span>
+                <span class="today-gain">+1,474 today</span>
+                <span>TypeScript</span>
+            </div>
+        </div>
+
+        <div class="analysis">
+            <strong>Today in one line:</strong> AI coding companions still dominate, but networking (netbird), torrent tooling (qui), and an old classic (calibre) remind us that infra and productivity tools stay evergreen.
+        </div>
+
+        <h2 class="section-title">Top 10 Trending Repositories</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/thedotmack/claude-mem" target="_blank">thedotmack / claude-mem</a></h3>
+                <span class="repo-rank">#1</span>
+            </div>
+            <p class="repo-desc">Session-wide memory layer for Claude Code, logging and summarizing your coding work so future sessions stay in-context.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-ts"></span>TypeScript</span>
+                <span>⭐ 18,443</span>
+                <span class="today-stars">+1,474 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/ThePrimeagen/99" target="_blank">ThePrimeagen / 99</a></h3>
+                <span class="repo-rank">#2</span>
+            </div>
+            <p class="repo-desc">"Neovim AI agent done right" – a tight AI assistant designed specifically around Neovim workflows.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-lua"></span>Lua</span>
+                <span>⭐ 3,074</span>
+                <span class="today-stars">+300 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/termux/termux-app" target="_blank">termux / termux-app</a></h3>
+                <span class="repo-rank">#3</span>
+            </div>
+            <p class="repo-desc">The classic Android terminal + Linux environment, still gaining stars as a must-have power-user tool.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-java"></span>Java</span>
+                <span>⭐ 50,004</span>
+                <span class="today-stars">+80 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/pedramamini/Maestro" target="_blank">pedramamini / Maestro</a></h3>
+                <span class="repo-rank">#4</span>
+            </div>
+            <p class="repo-desc">Agent orchestration command center – a control plane UI for multi-agent systems.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-ts"></span>TypeScript</span>
+                <span>⭐ 1,348</span>
+                <span class="today-stars">+336 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/netbirdio/netbird" target="_blank">netbirdio / netbird</a></h3>
+                <span class="repo-rank">#5</span>
+            </div>
+            <p class="repo-desc">WireGuard-based mesh networking with SSO, MFA and access control – think "modern VPN" as code.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-go"></span>Go</span>
+                <span>⭐ 22,039</span>
+                <span class="today-stars">+347 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/OpenBMB/ChatDev" target="_blank">OpenBMB / ChatDev</a></h3>
+                <span class="repo-rank">#6</span>
+            </div>
+            <p class="repo-desc">"Dev All" via LLM-powered multi-agent collaboration – an end-to-end agentic software factory.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-py"></span>Python</span>
+                <span>⭐ 29,534</span>
+                <span class="today-stars">+93 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/autobrr/qui" target="_blank">autobrr / qui</a></h3>
+                <span class="repo-rank">#7</span>
+            </div>
+            <p class="repo-desc">Single-binary qBittorrent web UI for managing multiple instances and automating torrent workflows.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-go"></span>Go</span>
+                <span>⭐ 2,934</span>
+                <span class="today-stars">+77 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/badlogic/pi-mono" target="_blank">badlogic / pi-mono</a></h3>
+                <span class="repo-rank">#8</span>
+            </div>
+            <p class="repo-desc">Full-stack AI agent toolkit: coding agent CLI, unified LLM API, TUI and web UI libraries, Slack bot, vLLM pods.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-ts"></span>TypeScript</span>
+                <span>⭐ 5,762</span>
+                <span class="today-stars">+878 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/VectifyAI/PageIndex" target="_blank">VectifyAI / PageIndex</a></h3>
+                <span class="repo-rank">#9</span>
+            </div>
+            <p class="repo-desc">Page-level document index for vectorless, reasoning-first RAG pipelines.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-py"></span>Python</span>
+                <span>⭐ 12,655</span>
+                <span class="today-stars">+793 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/karpathy/nanochat" target="_blank">karpathy / nanochat</a></h3>
+                <span class="repo-rank">#10</span>
+            </div>
+            <p class="repo-desc">Andrej Karpathy's take on "the best ChatGPT that $100 can buy" – a minimal but capable local chat stack.</p>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-py"></span>Python</span>
+                <span>⭐ 41,754</span>
+                <span class="today-stars">+254 today</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>Data from <a href="https://github.com/trending?since=daily" target="_blank">GitHub Trending</a> · Curated by 阿福 (Ah Fu)</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;"><a href="/">Archives</a></p>
+        </footer>
+    </div>
+</body>
+</html>

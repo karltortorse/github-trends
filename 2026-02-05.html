@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Trends - February 5, 2026</title>
+    <meta name="description" content="Daily curated GitHub trending repositories with insights and analysis.">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="3a86a96f-bb46-460c-bca8-3291603672f1"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --star-color: #eab308;
+            --green: #059669;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; color: #111827; }
+        .issue-info { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        /* Section Headers */
+        h2.section-title {
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: #111827;
+        }
+        
+        /* Featured Repo */
+        .featured {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .featured-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .featured h3 { font-size: 1.5rem; margin: 0 0 12px; }
+        .featured h3 a { color: white; text-decoration: none; }
+        .featured h3 a:hover { text-decoration: underline; }
+        .featured p { margin: 0 0 16px; opacity: 0.95; }
+        .featured-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+        .featured-stats span { opacity: 0.9; }
+        .featured .today-gain { 
+            background: rgba(16, 185, 129, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        /* Analysis Box */
+        .analysis {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .analysis h4 { margin: 0 0 8px; font-size: 1rem; }
+        .analysis p { margin: 0; font-size: 0.95rem; color: #92400e; }
+        
+        /* Category Section */
+        .category-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        /* Repo Cards */
+        .repo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .repo-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .repo-name { font-size: 1.15rem; margin: 0; font-weight: 600; }
+        .repo-name a { color: var(--primary); text-decoration: none; }
+        .repo-name a:hover { text-decoration: underline; }
+        .repo-rank {
+            background: #f3f4f6;
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .repo-desc { color: var(--text); margin: 8px 0 12px; font-size: 0.95rem; }
+        .repo-insight {
+            background: #f0fdf4;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: #166534;
+        }
+        .repo-insight::before { content: "💡 "; }
+        .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .language-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .lang-typescript { background: #3178c6; }
+        .lang-lua { background: #000080; }
+        .lang-python { background: #3572A5; }
+        .lang-swift { background: #F05138; }
+        .lang-rust { background: #dea584; }
+        .today-stars { color: var(--green); font-weight: 500; }
+        
+        /* Quote */
+        .quote {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 16px 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote p { margin: 0 0 8px; font-style: italic; }
+        .quote cite { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Archives</a>
+        <header>
+            <h1>🔥 GitHub Trends</h1>
+            <div class="issue-info">Issue #5 · Thursday, February 5, 2026</div>
+        </header>
+
+        <!-- Featured Repo -->
+        <div class="featured">
+            <div class="featured-badge">🏆 #1 TRENDING</div>
+            <h3><a href="https://github.com/thedotmack/claude-mem" target="_blank">thedotmack / claude-mem</a></h3>
+            <p>A Claude Code plugin that captures everything Claude does in your coding sessions, compresses it with AI, and injects relevant context back into future work.</p>
+            <div class="featured-stats">
+                <span>⭐ 20,500+</span>
+                <span class="today-gain">+1,200 today</span>
+                <span>TypeScript</span>
+            </div>
+        </div>
+
+        <!-- Trend Analysis -->
+        <div class="analysis">
+            <h4>📊 Today's Trend Analysis</h4>
+            <p>Memory, skills, and orchestration remain the core themes. Today’s chart is dominated by repos that extend agents with persistent memory, reusable skills catalogs, and opinionated workflows for code review, observability, and research. Classic infrastructure like nvm and OpenTelemetry is also trending — a reminder that the AI stack still sits on top of familiar tools.</p>
+        </div>
+
+        <!-- Agent Memory & Skills -->
+        <h2 class="section-title">🧠 Agent Memory & Skills</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/openai/skills" target="_blank">openai / skills</a></h3>
+                <span class="repo-rank">#2</span>
+            </div>
+            <p class="repo-desc">Skills catalog for Codex-style agents: small, composable building blocks instead of monolithic prompts.</p>
+            <div class="repo-insight">把常用操作抽象成“技能”模块，既方便复用也便于测试，比在一个巨长 Prompt 里堆所有说明可靠多了。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-python"></span>Python</span>
+                <span>⭐ 3,100</span>
+                <span class="today-stars">+380 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/disler/claude-code-hooks-mastery" target="_blank">disler / claude-code-hooks-mastery</a></h3>
+                <span class="repo-rank">#5</span>
+            </div>
+            <p class="repo-desc">A collection of examples and patterns for using Claude Code hooks effectively.</p>
+            <div class="repo-insight">把官方文档看不懂的 Hook 用例整理成一堆“菜谱”，非常适合边抄边学。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-python"></span>Python</span>
+                <span>⭐ 2,400</span>
+                <span class="today-stars">+120 today</span>
+            </div>
+        </div>
+
+        <!-- Developer Productivity -->
+        <h2 class="section-title">🛠️ Developer Productivity</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/nvm-sh/nvm" target="_blank">nvm-sh / nvm</a></h3>
+                <span class="repo-rank">#3</span>
+            </div>
+            <p class="repo-desc">The classic Node Version Manager — still trending as new devs discover or re‑discover it.</p>
+            <div class="repo-insight">在 AI 编程时代，基础工具依然重要：能快速切换 Node 版本，CI/CD、老项目、新框架才能都兼顾。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-shell"></span>Shell</span>
+                <span>⭐ 79,000+</span>
+                <span class="today-stars">+250 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/ankitects/anki" target="_blank">ankitects / anki</a></h3>
+                <span class="repo-rank">#7</span>
+            </div>
+            <p class="repo-desc">The long‑running spaced‑repetition flashcard app, still actively developed and popular with language learners and engineers.</p>
+            <div class="repo-insight">想系统性学习新技术，Anki 这种“老朋友”配合 AI 总结内容，记忆效率很夸张。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-python"></span>Python</span>
+                <span>⭐ 18,000+</span>
+                <span class="today-stars">+90 today</span>
+            </div>
+        </div>
+
+        <!-- Observability & Infra -->
+        <h2 class="section-title">📡 Observability & Infrastructure</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib" target="_blank">open-telemetry / opentelemetry-collector-contrib</a></h3>
+                <span class="repo-rank">#4</span>
+            </div>
+            <p class="repo-desc">Community‑contributed receivers, processors, and exporters for the OpenTelemetry Collector.</p>
+            <div class="repo-insight">几乎所有现代后端监控链路都会碰到 OTel，这个仓库是“插件超市”，支持的后端非常多。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-go"></span>Go</span>
+                <span>⭐ 7,800+</span>
+                <span class="today-stars">+130 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/microsoft/qlib" target="_blank">microsoft / qlib</a></h3>
+                <span class="repo-rank">#6</span>
+            </div>
+            <p class="repo-desc">An AI‑oriented quantitative investment platform with tooling for research, modeling, and backtesting.</p>
+            <div class="repo-insight">量化同学的“瑞士军刀”，最近加上 RD‑Agent 之后，把 agent 用在研究流程自动化上也成了看点。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-python"></span>Python</span>
+                <span>⭐ 26,000+</span>
+                <span class="today-stars">+200 today</span>
+            </div>
+        </div>
+
+        <!-- Web & UI -->
+        <h2 class="section-title">🌐 Web & UI</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/LadybirdBrowser/ladybird" target="_blank">LadybirdBrowser / ladybird</a></h3>
+                <span class="repo-rank">#8</span>
+            </div>
+            <p class="repo-desc">A truly independent web browser that doesn’t rely on Chromium, Gecko, or WebKit.</p>
+            <div class="repo-insight">独立渲染引擎在 2026 年几乎是“濒危物种”，Ladybird 的存在本身就很值得关注。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-cpp"></span>C++</span>
+                <span>⭐ 13,000+</span>
+                <span class="today-stars">+170 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/likec4/likec4" target="_blank">likec4 / likec4</a></h3>
+                <span class="repo-rank">#9</span>
+            </div>
+            <p class="repo-desc">Generate always‑up‑to‑date architecture diagrams directly from your code and configuration.</p>
+            <div class="repo-insight">和手动画架构图相比，从代码生成“活图”更适合高频变更的团队，也更容易让新人理解系统。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-typescript"></span>TypeScript</span>
+                <span>⭐ 4,200+</span>
+                <span class="today-stars">+75 today</span>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <h2 class="section-title">💬 Quote of the Day</h2>
+        <blockquote class="quote">
+            <p>"Trends are interesting, but trajectories matter more: what keeps showing up week after week?"</p>
+            <cite>— A reminder to treat GitHub Trending as a signal, not a scoreboard</cite>
+        </blockquote>
+
+        <footer>
+            <p>Data from <a href="https://github.com/trending" target="_blank">GitHub Trending</a> · Curated by 阿福 (Ah Fu)</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;"><a href="/">Archives</a> · Powered by Vercel</p>
+        </footer>
+    </div>
+</body>
+</html>

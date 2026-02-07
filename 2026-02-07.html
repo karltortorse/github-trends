@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Trends - February 7, 2026</title>
+    <meta name="description" content="Daily curated GitHub trending repositories with insights and analysis.">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="3a86a96f-bb46-460c-bca8-3291603672f1"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --star-color: #eab308;
+            --green: #059669;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+        h1 { font-size: 2rem; margin-bottom: 8px; color: #111827; }
+        .issue-info { color: var(--text-secondary); font-size: 0.95rem; }
+        
+        /* Section Headers */
+        h2.section-title {
+            font-size: 1.4rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            color: #111827;
+        }
+        
+        /* Featured Repo */
+        .featured {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 30px;
+            color: white;
+        }
+        .featured-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .featured h3 { font-size: 1.5rem; margin: 0 0 12px; }
+        .featured h3 a { color: white; text-decoration: none; }
+        .featured h3 a:hover { text-decoration: underline; }
+        .featured p { margin: 0 0 16px; opacity: 0.95; }
+        .featured-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+        .featured-stats span { opacity: 0.9; }
+        .featured .today-gain { 
+            background: rgba(16, 185, 129, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        /* Analysis Box */
+        .analysis {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .analysis h4 { margin: 0 0 8px; font-size: 1rem; }
+        .analysis p { margin: 0; font-size: 0.95rem; color: #92400e; }
+        
+        /* Category Section */
+        .category-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        /* Repo Cards */
+        .repo-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .repo-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .repo-name { font-size: 1.15rem; margin: 0; font-weight: 600; }
+        .repo-name a { color: var(--primary); text-decoration: none; }
+        .repo-name a:hover { text-decoration: underline; }
+        .repo-rank {
+            background: #f3f4f6;
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .repo-desc { color: var(--text); margin: 8px 0 12px; font-size: 0.95rem; }
+        .repo-insight {
+            background: #f0fdf4;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            color: #166534;
+        }
+        .repo-insight::before { content: "💡 "; }
+        .repo-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .language-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+        .lang-python { background: #3572A5; }
+        .lang-typescript { background: #3178c6; }
+        .lang-shell { background: #89e051; }
+        .lang-go { background: #00ADD8; }
+        .lang-rust { background: #dea584; }
+        .lang-batchfile { background: #C1F12E; }
+        .lang-jupyter { background: #DA5B0B; }
+        .today-stars { color: var(--green); font-weight: 500; }
+        
+        /* Quote */
+        .quote {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 16px 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote p { margin: 0 0 8px; font-style: italic; }
+        .quote cite { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Archives</a>
+        <header>
+            <h1>🔥 GitHub Trends</h1>
+            <div class="issue-info">Issue #7 · Saturday, February 7, 2026</div>
+        </header>
+
+        <!-- Featured Repo -->
+        <div class="featured">
+            <div class="featured-badge">🏆 #1 TRENDING</div>
+            <h3><a href="https://github.com/openai/skills" target="_blank">openai / skills</a></h3>
+            <p>Skills Catalog for Codex</p>
+            <div class="featured-stats">
+                <span>⭐ 4,853</span>
+                <span class="today-gain">+583 today</span>
+                <span>Python</span>
+            </div>
+        </div>
+
+        <!-- Trend Analysis -->
+        <div class="analysis">
+            <h4>📊 Today's Trend Analysis</h4>
+            <p>AI remains the dominant force, with OpenAI's new skills catalog leading the charge and ByteDance's multimodal agent stack following closely. We also see strong interest in networking and security tools (Trivy, Anet, Zapret) alongside evergreen developer utilities like NVM.</p>
+        </div>
+
+        <!-- AI & Agents Category -->
+        <h2 class="section-title">🤖 AI & Agents</h2>
+        
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank">bytedance / UI-TARS-desktop</a></h3>
+                <span class="repo-rank">#2</span>
+            </div>
+            <p class="repo-desc">The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra</p>
+            <div class="repo-insight">ByteDance 的多模态 AI Agent 栈。支持桌面自动化，连接前沿模型与 Agent 基础设施。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-typescript"></span>TypeScript</span>
+                <span>⭐ 27,107</span>
+                <span class="today-stars">+573 today</span>
+            </div>
+        </div>
+
+        <!-- Developer Tools Category -->
+        <h2 class="section-title">🛠️ Developer Tools</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/nvm-sh/nvm" target="_blank">nvm-sh / nvm</a></h3>
+                <span class="repo-rank">#3</span>
+            </div>
+            <p class="repo-desc">Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions</p>
+            <div class="repo-insight">Node.js 版本管理神器。每个前端开发者都应该拥有。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-shell"></span>Shell</span>
+                <span>⭐ 91,499</span>
+                <span class="today-stars">+131 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/likec4/likec4" target="_blank">likec4 / likec4</a></h3>
+                <span class="repo-rank">#4</span>
+            </div>
+            <p class="repo-desc">Visualize, collaborate, and evolve the software architecture with always actual and live diagrams from your code</p>
+            <div class="repo-insight">像写代码一样画架构图。实时从代码生成可视化图表，保持架构文档永远是最新的。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-typescript"></span>TypeScript</span>
+                <span>⭐ 1,806</span>
+                <span class="today-stars">+40 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/aquasecurity/trivy" target="_blank">aquasecurity / trivy</a></h3>
+                <span class="repo-rank">#5</span>
+            </div>
+            <p class="repo-desc">Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more</p>
+            <div class="repo-insight">全能的安全扫描工具。容器、K8s、代码库、云环境，一网打尽。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-go"></span>Go</span>
+                <span>⭐ 31,540</span>
+                <span class="today-stars">+165 today</span>
+            </div>
+        </div>
+
+        <!-- Security & Networking -->
+        <h2 class="section-title">🔒 Security & Networking</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/ZeroTworu/anet" target="_blank">ZeroTworu / anet</a></h3>
+                <span class="repo-rank">#6</span>
+            </div>
+            <p class="repo-desc">Simple Rust VPN Client / Server</p>
+            <div class="repo-insight">用 Rust 写的轻量级 VPN 客户端/服务端。学习网络编程的好例子。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-rust"></span>Rust</span>
+                <span>⭐ 530</span>
+                <span class="today-stars">+193 today</span>
+            </div>
+        </div>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/Flowseal/zapret-discord-youtube" target="_blank">Flowseal / zapret-discord-youtube</a></h3>
+                <span class="repo-rank">#7</span>
+            </div>
+            <p class="repo-desc">Tools to bypass DPI and access blocked services</p>
+            <div class="repo-insight">DPI 绕过工具。针对 Discord 和 YouTube 等服务的访问限制。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-batchfile"></span>Batchfile</span>
+                <span>⭐ 21,969</span>
+                <span class="today-stars">+70 today</span>
+            </div>
+        </div>
+
+        <!-- Learning Resources -->
+        <h2 class="section-title">📚 Learning Resources</h2>
+
+        <div class="repo-card">
+            <div class="repo-header">
+                <h3 class="repo-name"><a href="https://github.com/DataExpert-io/data-engineer-handbook" target="_blank">DataExpert-io / data-engineer-handbook</a></h3>
+                <span class="repo-rank">#8</span>
+            </div>
+            <p class="repo-desc">This is a repo with links to everything you'd ever want to learn about data engineering</p>
+            <div class="repo-insight">数据工程师手册。从入门到精通，涵盖了你想知道的一切。</div>
+            <div class="repo-meta">
+                <span><span class="language-dot lang-jupyter"></span>Jupyter Notebook</span>
+                <span>⭐ 39,862</span>
+                <span class="today-stars">+71 today</span>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <h2 class="section-title">💬 Quote of the Day</h2>
+        <blockquote class="quote">
+            <p>"First, solve the problem. Then, write the code."</p>
+            <cite>— John Johnson</cite>
+        </blockquote>
+
+        <footer>
+            <p>Data from <a href="https://github.com/trending" target="_blank">GitHub Trending</a> · Curated by 阿福 (Ah Fu)</p>
+            <p style="font-size: 0.8rem; margin-top: 8px;"><a href="/">Archives</a> · Powered by Vercel</p>
+        </footer>
+    </div>
+</body>
+</html>
